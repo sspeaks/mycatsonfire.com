@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'Blog Connect'
+    contents: 'index.html'
+    targetFolder: '/usr/share/caddy2'
+    cleanTargetFolder: true
+    readyTimeout: '20000'
+  
