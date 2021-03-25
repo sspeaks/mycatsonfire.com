@@ -8,7 +8,7 @@ steps:
   
 - task: CopyFilesOverSSH@0
   inputs:
-    sshEndpoint: 'Blog Connect'
+    sshEndpoint: 'Cats Connect'
     contents: 'index.html'
     targetFolder: '/usr/share/caddy2'
     cleanTargetFolder: true
