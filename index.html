@@ -8,24 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        const table = document.querySelector('#commentTable');
-        // ALSO NEED TO BIND AN ON CLICK LISTENER HERE
-        axios.get('/getComments').then(body => {
-            body && body.messages && body.messages.forEach(message => {
-                const nametd = new Element("td");
-                nametd.nodeValue = message.name;
-                const messagetd = new Element("td");
-                messagetd.nodeValue = message.message;
-                const dateTd = new Element("td");
-                dateTd.nodeValue = message.date;
-                table.appendChild(nametd);
-                table.appendChild(dateTd);
-                tabble.appendChild(messagetd);
-            });
-        });
-
-    </script>
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
@@ -37,12 +19,15 @@
                 allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
             <p>Give him your twitch prime! He's awesome</p>
             <h3>Submit a dumb comment</h3>
-            <form action="/add-message" method="post">
+            <!-- <form id="myForm"
+                action="https://mycatsonfire.azurewebsites.net/api/commentsection?code=%2FbqGloaCz%2FfbYrNsPbEX0IN4URJrCUYgtOlYrttDY9a6QolLXUkrBA%3D%3D"
+                method="post"> -->
+            <form id="myForm">
                 <ul style="list-style: none;">
                     <li><label for="name">Username</label><input id="name" name="name" type="text" required></li>
-                    <li><label for="message">Message</label><input id="message" name="message" type="text" required>
+                    <li><label for="message">Message</label><textarea id="message" rows="4" cols="50" name="message" required></textarea>
                     </li>
-                    <button type="submit">Add comment</button>
+                    <button id="submitButton">Add comment</button>
                 </ul>
             </form>
         </div>
@@ -63,6 +48,48 @@
         Dasiy's dad before they'll be reflected in the website</p>
 
 
+    <script type="text/javascript">
+        (function () {
+            const table = document.querySelector('#commentTable');
+            const form = document.querySelector("#myForm");
+
+            function getComments() {
+                table.innerHTML = '';
+                // axios.get('https://mycatsonfire.azurewebsites.net/api/getcomments?code=evvfan5MMgcwDJmcRR9MxakjW2vxc68hdL5vtwaxaWpvibJQP0eBsg%3D%3D').then(body => {
+                axios.get('/get-comments').then(body => {
+                    console.log(body);
+                    body && body.data && body.data.forEach(message => {
+                        console.log(message)
+                        const row = table.insertRow(-1);
+                        const nametd = row.insertCell(0);
+                        nametd.innerHTML = message.name;
+                        const dateTd = row.insertCell(1);
+                        dateTd.innerHTML = message.date;
+                        const messagetd = row.insertCell(2);
+                        messagetd.innerHTML = message.message;
+                    });
+                });
+            }
+            getComments();
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const request = new XMLHttpRequest();
+                request.open("POST", "/add-comment");
+                const formData = new FormData(form)
+                let object = {};
+                formData.forEach((value, key) => object[key] = value);
+                let json = JSON.stringify(object);
+                request.send(json);
+
+
+                setTimeout(() => getComments(), 5000);
+                return false;
+            });
+        })();
+
+
+    </script>
 </body>
 
 </html>

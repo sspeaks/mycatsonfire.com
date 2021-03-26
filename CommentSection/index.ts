@@ -7,6 +7,12 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const message = (req.body && req.body.message);
     const date = moment().format('MMMM Do YYYY, h:mm:ss a');
 
+    context.log(req.body);
+
+    if (typeof (context.bindings.outputTable) == 'undefined') {
+        context.bindings.outputTable = [];
+    }
+
     if (name && message && date) {
         context.bindings.outputTable.push({
             PartitionKey: "comments",

@@ -6,7 +6,6 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get",
         "post"
       ]
     },
@@ -20,7 +19,7 @@
       "direction": "out",
       "name": "outputTable",
       "tableName": "comments",
-      "connection": "catsonfire_STORAGE"
+      "connection": "mycatsonfire2_STORAGE"
     }
   ],
   "scriptFile": "../dist/CommentSection/index.js"
