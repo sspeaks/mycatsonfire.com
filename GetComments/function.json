@@ -6,8 +6,7 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get",
-        "post"
+        "get"
       ]
     },
     {
@@ -20,8 +19,8 @@
       "direction": "in",
       "name": "inputTable",
       "tableName": "comments",
-      "take": "50",
-      "connection": "catsonfire_STORAGE"
+      "take": "500",
+      "connection": "mycatsonfire2_STORAGE"
     }
   ],
   "scriptFile": "../dist/GetComments/index.js"
