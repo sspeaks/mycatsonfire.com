@@ -82,6 +82,7 @@
                 let json = JSON.stringify(object);
                 request.send(json);
 
+                form.reset();
 
                 setTimeout(() => getComments(), 5000);
                 return false;
