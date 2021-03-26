@@ -13,7 +13,15 @@
         // ALSO NEED TO BIND AN ON CLICK LISTENER HERE
         axios.get('/getComments').then(body => {
             body && body.messages && body.messages.forEach(message => {
-
+                const nametd = new Element("td");
+                nametd.nodeValue = message.name;
+                const messagetd = new Element("td");
+                messagetd.nodeValue = message.message;
+                const dateTd = new Element("td");
+                dateTd.nodeValue = message.date;
+                table.appendChild(nametd);
+                table.appendChild(dateTd);
+                tabble.appendChild(messagetd);
             });
         });
 
