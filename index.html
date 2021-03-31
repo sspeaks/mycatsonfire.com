@@ -22,6 +22,9 @@
                 display:flex; 
                 flex-direction: column;
             }
+            .disclaimer {
+                position:inherit;
+            }
         }
 
         /* large screens */
@@ -45,6 +48,11 @@
             .flex-horiz {
                 display:flex; 
                 flex-direction: row;
+            }
+
+            .disclaimer {
+                position:fixed; 
+                bottom:0px;
             }
         }
     </style>
@@ -82,7 +90,7 @@
         </table>
     </div>
 
-    <p style="position:fixed; bottom:0px;">If you're bored and want to add random stuff to this website you can. Just
+    <p class="disclaimer">If you're bored and want to add random stuff to this website you can. Just
         go to <a href="https://github.com/sspeaks/mycatsonfire.com">this github repo</a>. Changes must be approved by
         Dasiy's dad before they'll be reflected in the website</p>
 
