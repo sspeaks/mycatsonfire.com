@@ -13,17 +13,24 @@
             .catpack {
                 position: inherit;
             }
+
             #commentTable {
                 max-height: 300px;
                 overflow-y: scroll;
                 border: 1px solid black
             }
+
             .flex-horiz {
-                display:flex; 
+                display: flex;
                 flex-direction: column;
             }
+
             .disclaimer {
-                position:inherit;
+                position: inherit;
+            }
+
+            iframe {
+                width: 100%;
             }
         }
 
@@ -46,14 +53,14 @@
             }
 
             .flex-horiz {
-                display:flex; 
+                display: flex;
                 flex-direction: row;
-                height:calc(100% - 150px);
+                height: calc(100% - 150px);
             }
 
             .disclaimer {
-                position:fixed; 
-                bottom:0px;
+                position: fixed;
+                bottom: 0px;
             }
         }
     </style>
@@ -67,7 +74,7 @@
 
     </div>
     <a style="font-size: 100px;" href="https://www.warcraftlogs.com/guild/calendar/555483">our logs</a>
-    <div class ="flex-horiz">
+    <div class="flex-horiz">
         <div>
             <h3>My Fav twitch streamer</h3>
             <iframe src="https://player.twitch.tv/?channel=mainteam7&parent=mycatsonfire.com" frameborder="0"
@@ -87,7 +94,7 @@
                 </ul>
             </form>
         </div>
-        <table id="commentTable" >
+        <table id="commentTable">
         </table>
     </div>
 
