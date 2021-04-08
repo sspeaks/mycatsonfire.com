@@ -9,8 +9,18 @@ steps:
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'Cats Connect'
-    contents: 'index.html'
+    contents: |
+      **
+      !CommentSection/**/*
+      !GetComments/**/*
+      !.vscode/**/*
+      !*.json
+      !*.yml
+      !*.md
+      !.funcignore
+      !.gitignore
+      !LICENSE
+      !.git/**/*
     targetFolder: '/usr/share/caddy2'
     cleanTargetFolder: true
     readyTimeout: '20000'
-  
