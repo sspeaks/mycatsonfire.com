@@ -12,6 +12,10 @@ body {
     padding: 0;
 }
 
+/*
+    TITLE BAR 
+*/
+
 .title-bar {
     display: flex;
     flex-direction: row;
@@ -21,14 +25,75 @@ body {
     padding: 0;
     margin: 0;
     justify-content: space-between;
-    height: 10%;
+    height: 75px;
 }
 
-.title-bar h1 {}
+.cat-container {
+    max-width:33%;
+}
+
+.title-bar>* {
+    flex-grow: 1;
+}
+
+.title-bar h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 75px;
+    margin: 0;
+}
 
 .title-bar img {
-    /* height: 100%; */
-    /* max-width: 100%; */
+    height: 100%;
+}
+
+/*
+    INFOBOX
+*/
+
+.infobox {
+    align-self: start;
+    max-width: 50%;
+}
+
+.infobox .infoheader {
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--main-font-color);
+    font-size: 2.25rem;
+    margin-bottom: 1em;
+}
+
+.infobox .info {
+    font-family: 'Indie Flower', cursive;
+    color: var(--main-font-color);
+    font-size: 1.75rem;
+}
+
+.infobox .info a{
+    color: var(--main-link-color)
+}
+
+.infobox-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    row-gap: 50px;
+    margin-top:25px;
+}
+
+.infobox.span2 {
+    grid-column: span 2;
+}
+
+/*
+    Twitch IFRAME
+*/
+
+iframe {
+    height:100%;
 }
 
 
