@@ -5,7 +5,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'Cats Connect'
@@ -24,3 +23,4 @@ steps:
     targetFolder: '/usr/share/caddy2'
     cleanTargetFolder: true
     readyTimeout: '20000'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest')
