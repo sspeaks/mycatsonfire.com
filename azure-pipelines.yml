@@ -23,4 +23,4 @@ steps:
     targetFolder: '/usr/share/caddy2'
     cleanTargetFolder: true
     readyTimeout: '20000'
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest')
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
