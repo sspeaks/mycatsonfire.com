@@ -13,6 +13,7 @@ body {
     padding: 0;
 }
 
+
 /*
     TITLE BAR 
 */
@@ -30,7 +31,7 @@ body {
 }
 
 .cat-container {
-    max-width:33%;
+    max-width: 33%;
 }
 
 .title-bar>* {
@@ -48,13 +49,14 @@ body {
     height: 100%;
 }
 
+
 /*
     INFOBOX
 */
 
 .infobox {
-    align-self:flex-start;
-    padding:20px;
+    align-self: flex-start;
+    padding: 20px;
     max-width: 50rem;
 }
 
@@ -64,8 +66,6 @@ body {
     font-size: 2.25rem;
     margin-bottom: 1em;
     font-weight: bold;
-    
-    
 }
 
 .infobox .info {
@@ -74,32 +74,33 @@ body {
     font-size: 1.75rem;
 }
 
-.infobox .info a{
+.infobox .info a {
     color: var(--main-link-color)
 }
 
 .infobox-grid {
-    display:grid;
-    height:100%;
-    grid-template-columns: repeat(auto-fit,  minmax(max(350px,50%), 1fr));
-    grid-template-rows: repeat(2,  1fr);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max(350px, 50%), 1fr));
     justify-items: start;
     align-items: center;
     justify-content: center;
     align-content: center;
     row-gap: 50px;
-    margin-top:25px;
+    margin-top: 25px;
 }
+
 
 /*
     Twitch IFRAME
 */
+
 .infobox.video {
     height: 90%;
-    width:90%;
+    width: 90%;
 }
+
 iframe {
-    width:100%;
+    width: 100%;
     aspect-ratio: 16/9;
 }
 
