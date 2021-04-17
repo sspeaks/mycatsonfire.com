@@ -1,6 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 
 const client_id = process.env["twitch_client_id"];
 const client_secret = process.env["twitch_client_secret"];

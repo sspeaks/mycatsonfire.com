@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/styles.css">
+    <script type="text/javascript" src="static/favoriteStreamers.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
@@ -38,13 +40,12 @@
                     href="https://github.com/sspeaks/mycatsonfire.com">github
                     repo</a>.</div>
         </section>
-        <section class="infobox">
+        <section class="infobox streamer-pane">
             <header class="infoheader">Do you like watching quality streams?</header>
-            <div class="info">You should watch Mainteam7. He’s awesome!</div>
+            <div id="watch-him" class="info">You should watch Mainteam7. He’s awesome!</div>
         </section>
-        <section class="infobox video">
-            <iframe src="https://player.twitch.tv/?channel=mainteam7&parent=mycatsonfire.com" frameborder="0"
-                allowfullscreen="true" scrolling="no"></iframe>
+        <section class="infobox twitch-infobox streamer-pane">
+            <div id="twitch-embed"></div>
         </section>
     </div>
     <!-- <div class="catpic">
@@ -81,6 +82,7 @@
 
     <!-- This code allows for the submit button to send the comments to the correct endpoint as well as load comments on page load and upon submittal of a new comment -->
     <script type="text/javascript" src="static/loadComments.js"></script>
+    <script type="text/javascript" src="static/toggleStreamerPanes.js"></script>
 </body>
 
 </html>

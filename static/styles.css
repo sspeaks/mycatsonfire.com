@@ -94,15 +94,22 @@ body {
     Twitch IFRAME
 */
 
-.infobox.video {
-    height: 90%;
-    width: 90%;
+.twitch-infobox {
+    width: 100%;
+    min-width: clamp(300px, 50vw, 1000px);
+    aspect-ratio: 16/9;
 }
 
+.streamer-pane {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+/* 
 iframe {
     width: 100%;
     aspect-ratio: 16/9;
-}
+} */
 
 
 /* body {
