@@ -25,6 +25,7 @@ const getIsStreamerOnline = async (streamer: string) => {
         .then(response => response.data.data[0].is_live);
 };
 
+// TODO: Add logic that returns the old token if it's not expired yet
 const getAuthToken = async () => await axios.post('https://id.twitch.tv/oauth2/token' +
     `?client_id=${client_id}` +
     `&client_secret=${client_secret}` +
