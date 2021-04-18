@@ -6,7 +6,8 @@ const client_id = process.env["twitch_client_id"];
 const client_secret = process.env["twitch_client_secret"];
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    const isLive = await getIsStreamerOnline(req.query.streamer, context);
+    const streamer = context.bindingData.streamer;
+    const isLive = await getIsStreamerOnline(streamer, context);
 
     context.res = { body: { isLive } };
     context.done();
@@ -24,10 +25,11 @@ const getIsStreamerOnline = async (streamer: string, context: Context) => {
             }
         });
         context.log("Authentication to twitch successful");
-        return response.data.data[0].is_live;
+        // context.log(JSON.stringify(response.data.data));
+        return response.data.data.find(item => item?.broadcaster_login.toUpperCase() === streamer?.toUpperCase())?.is_live || false;
     } catch (err) {
         context.log("An error occured during authentication to twitch: " + err);
-        if (err.response.status === 401) {
+        if (err?.response?.status === 401) {
             await getAuthToken();
             return await getIsStreamerOnline(streamer, context);
         }

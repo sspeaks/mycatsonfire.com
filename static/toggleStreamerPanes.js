@@ -6,7 +6,7 @@
 
     for (let streamer of favStreamers) {
 
-        const isLive = await axios.get(`/isActive?streamer=${streamer}`).then(response => response.data.isLive);
+        const isLive = await axios.get(`/isActive/${streamer}`).then(response => response.data.isLive);
 
         if (isLive) {
             watchHim.innerHTML = watchHim.innerHTML.replace("Mainteam7", streamer);
