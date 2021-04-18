@@ -6,7 +6,7 @@
 
     const results = await Promise.all(favStreamers
         .map(async (streamer) => {
-            const isLive = await axios.get(`http://localhost:7071/api/GetIsStreamerActive/${streamer}`).then(response => response.data.isLive);
+            const isLive = await axios.get(`/isActive/${streamer}`).then(response => response.data.isLive);
             return { streamer, isLive };
         }));
 
