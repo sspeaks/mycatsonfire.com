@@ -96,7 +96,7 @@ body {
 
 .twitch-infobox {
     width: 100%;
-    min-width: clamp(300px, 50vw, 1000px);
+    min-width: clamp(300px, 50vw, 900px);
     aspect-ratio: 16/9;
 }
 

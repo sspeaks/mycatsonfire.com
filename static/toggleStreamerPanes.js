@@ -12,7 +12,7 @@
 
     const streamer = results.find(result => result.isLive)?.streamer;
 
-    if (typeof (streamer) !== undefined) {
+    if (typeof (streamer) !== "undefined") {
         watchHim.innerHTML = watchHim.innerHTML.replace("Mainteam7", streamer);
 
         new Twitch.Embed("twitch-embed", {
