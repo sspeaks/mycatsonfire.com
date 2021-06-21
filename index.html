@@ -28,10 +28,8 @@
     <div class="infobox-grid">
         <section class="infobox">
             <header class="infoheader">Did you recently raid with “Did We Bloodlust” in World of Warcraft</header>
-            <!-- <div class="info"><a href="https://www.warcraftlogs.com/guild/calendar/555483">Our logs can be found
-                    here</a></div> -->
-            <iframe src="https://mycatsonfire.com/guild/calendar/555483" id="Iframe"
-                style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+            <div class="info"><a href="https://www.warcraftlogs.com/guild/calendar/555483">Our logs can be found
+                    here</a></div>
         </section>
         <section class="infobox">
             <header class="infoheader">What even is the point of this dumb <a
@@ -57,32 +55,6 @@
     </div>
     <!-- <script type="text/javascript" src="static/loadComments.js"></script> -->
     <script type="text/javascript" src="static/toggleStreamerPanes.js"></script>
-    <script>
-        // Selecting the iframe element
-        var frame = document.getElementById("Iframe");
-        console.log( "run");
-        // Adjusting the iframe height onload event
-        frame.onload = function ()
-        // function execute while load the iframe
-        {
-            console.log("onload");
-            // set the height of the iframe as 
-            // the height of the iframe content
-            frame.style.height =
-                frame.contentWindow.document.body.scrollHeight + 'px';
-
-            console.log(`height ${frame.contentWindow.document.body.scrollHeight}`);
-
-
-            // set the width of the iframe as the 
-            // width of the iframe content
-            frame.style.width =
-                frame.contentWindow.document.body.scrollWidth + 'px';
-
-                console.log(`width ${frame.contentWindow.document.body.scrollWidth}`);
-
-        }
-    </script>
 </body>
 
 </html>
