@@ -52,7 +52,20 @@
             <div id="twitch-embed"></div>
         </section>
         <section>
-            <h4 id="subjectName"></h4>
+            <form action="http://nixos.westus.cloudapp.azure.com:8080" method="post" enctype="multipart/form-data">
+                <div>
+                    <label for="file">Choose file to upload</label>
+                    <input type="file" id="file" name="file" multiple="">
+                    <label for="start">StartTime (HH:MM:SS)</label>
+                    <input type="text" id="start" name="start">
+                    <label for="stop">Stoptime (HH:MM:SS)</label>
+                    <input type="text" id="stop" name="stop">
+
+                </div>
+                <div>
+                    <button>Submit</button>
+                </div>
+            </form>
         </section>
     </div>
     <!-- <script type="text/javascript" src="static/loadComments.js"></script> -->
