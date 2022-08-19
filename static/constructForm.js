@@ -48,3 +48,5 @@ function downloadFile(blob, filename) {
     a.download = filename;
     a.click();
 }
+
+module.exports = { SubmitData, downloadFile };

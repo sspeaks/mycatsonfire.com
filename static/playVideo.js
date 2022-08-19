@@ -1,4 +1,5 @@
 const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
+const { SubmitData, downloadFile } = require("./constructForm.js");
 (() => {
     const videoNode = document.querySelector('#ffmpeg-video');
     const inputNode = document.querySelector('#file');
