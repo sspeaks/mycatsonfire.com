@@ -13,8 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/styles.css">
-    <script type="text/javascript" src="static/favoriteStreamers.js"></script>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <!-- <script type="text/javascript" src="static/favoriteStreamers.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script> -->
+    <!-- <script src="/static/ffmpeg.min.js"></script> -->
+    <!-- <script src='node_modules/@ffmpeg/ffmpeg/dist/ffmpeg.min.js'></script> -->
+    <script defer="defer" type="text/javascript" src="static/constructForm.js"></script>
+    <script defer="defer" type="text/javascript"
+        src="dist/playVideo.bundle.0d7d985e38eb60e0a6f4bd1feea49154bad2c9514f6021c93c13d88cd4617aab.js"></script>
+    <!-- <script defer="defer" src="static/ffmpeg-core.wasm"></script> -->
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
@@ -44,33 +50,41 @@
                 You can also contribute to our guild's <a href="https://github.com/sspeaks/clipbot">ClipBot</a>.
             </div>
         </section>
-        <section class="infobox streamer-pane">
+        <!-- <section class="infobox streamer-pane">
             <header class="infoheader">Do you like watching quality streams?</header>
             <div id="watch-him" class="info">You should watch Mainteam7. He’s awesome!</div>
         </section>
         <section class="infobox twitch-infobox streamer-pane">
             <div id="twitch-embed"></div>
+        </section> -->
+        <section class="infobox">
+            <div class="info">
+                <label for="file">Choose file to upload</label>
+                <input type="file" id="file" name="file" multiple="" required>
+                <br>
+                <label for="start">StartTime (HH:MM:SS)</label>
+                <input type="text" id="start" name="start" value="00:00:00">
+                <br>
+                <label for="dur">Duration (in seconds)</label>
+                <input type="text" id="dur" name="dur">
+                <br>
+                <label for="fileName">Output file name</label>
+                <input type="text" id="fileName" name="fileName">
+                <button id="playClip" style="display: none;">Play Clip</button>
+                <!-- <label for=" stop">Stoptime (HH:MM:SS)</label> -->
+                <!-- <input type="text" id="stop" name="stop"> -->
+                <div>
+                    <button id="addClip">Add Clip to bot</button>
+                </div>
+            </div>
         </section>
         <section class="infobox">
-            <form class="info" action="/pogbot" method="post"
-                enctype="multipart/form-data">
-                <div>
-                    <label for="file">Choose file to upload</label>
-                    <input type="file" id="file" name="file" multiple="" required>
-                    <label for="start">StartTime (HH:MM:SS)</label>
-                    <input type="text" id="start" name="start">
-                    <label for="stop">Stoptime (HH:MM:SS)</label>
-                    <input type="text" id="stop" name="stop">
-
-                </div>
-                <div>
-                    <button>Submit</button>
-                </div>
-            </form>
+            <video id="ffmpeg-video" controls> </video>
         </section>
     </div>
     <!-- <script type="text/javascript" src="static/loadComments.js"></script> -->
-    <script type="text/javascript" src="static/toggleStreamerPanes.js"></script>
+
+    <!-- <script type="text/javascript" src="static/toggleStreamerPanes.js"></script> -->
 </body>
 
 </html>
