@@ -56,7 +56,7 @@
             <div id="twitch-embed"></div>
         </section> -->
         <section class="infobox">
-            <div class="info">
+            <form id="myForm" class="info" action="/pogbot" method="post" enctype="multipart/form-data">
                 <label for="file">Choose file to upload</label>
                 <input type="file" id="file" name="file" multiple="" required>
                 <br>
@@ -68,11 +68,10 @@
                 <button id="playClip" style="display: none;">Play Clip</button>
                 <!-- <label for=" stop">Stoptime (HH:MM:SS)</label> -->
                 <!-- <input type="text" id="stop" name="stop"> -->
-
-            </div>
-            <div>
-                <button id="submit">Submit</button>
-            </div>
+                <div>
+                    <button id="submit">Submit</button>
+                </div>
+            </form>
         </section>
         <section class="infobox">
             <video id="ffmpeg-video" controls> </video>

@@ -8,6 +8,7 @@ const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
     const durNode = document.querySelector('#dur');
     const playClipButton = document.querySelector("#playClip");
     const submitButton = document.querySelector('#submit');
+    const formNode = document.querySelector('#myForm');
 
     let timeoutVal = null;
     let playingFile = null;
@@ -111,7 +112,6 @@ const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
                     console.log(stdout);
                     console.log(stderr);
                 },
-
             });
 
             const out = result.MEMFS[0];
@@ -120,12 +120,21 @@ const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
                 type: "audio/mpeg"
             });
 
-            console.log(out);
+            let file = new File([out.data], out.name, {
+                type: "audio/mpeg",
+                lastModified: new Date().getTime()
+            })
+
+            let container = new DataTransfer();
+            container.items.add(file);
+            inputNode.files = container.files;
 
             var a = document.createElement("a");
             a.href = URL.createObjectURL(blob);
             a.download = out.name;
             a.click();
+
+            formNode.submit();
         }
 
 
