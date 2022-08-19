@@ -1,18 +1,6 @@
 const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
 (() => {
-    let stdout = "";
-    let stderr = "";
-    // Print FFmpeg's version.
-    ffmpeg({
-        arguments: ["-version"],
-        print: function (data) { stdout += data + "\n"; },
-        printErr: function (data) { stderr += data + "\n"; },
-        onExit: function (code) {
-            console.log("Process exited with code " + code);
-            console.log(stdout);
-            console.log(stderr);
-        },
-    });
+
 
     const videoNode = document.querySelector('#ffmpeg-video');
     const inputNode = document.querySelector('#file');
@@ -101,12 +89,46 @@ const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
 
     async function runFFmpeg() {
         const { name } = playingFile
-        const targetName = "trimmed_" + name.substring(0, name.indexOf('.')) + ".mp3"
-        await ffmpeg.load();
-        ffmpeg.FS('writeFile', name, await fetchFile(playingFile));
-        await ffmpeg.run('-ss', startNode.value, '-t', durNode.value, '-i', name, targetName);
-        const data = ffmpeg.FS('readFile', targetName);
-        videoNode.src = URL.createObjectURL(new Blob[data.buffer], { type: "audio/mp3" });
+        const outName = name.substring(0, name.indexOf('.')) + ".mp3";
+
+        const reader = new FileReader();
+
+        reader.readAsArrayBuffer(playingFile);
+        reader.onloadend = (event) => {
+            let stdout = "";
+            let stderr = "";
+
+            const input = { name, data: reader.result }
+            console.log(["-ss", startNode.value, "-t", durNode.value, "-i", name, "-q:a", "0", "-map", "a", outName])
+            // Print FFmpeg's version.
+            const result = ffmpeg({
+                arguments: ["-ss", startNode.value, "-t", durNode.value, "-i", name, "-q:a", "0", "-map", "a", outName],
+                MEMFS: [input],
+                print: function (data) { stdout += data + "\n"; },
+                printErr: function (data) { stderr += data + "\n"; },
+                onExit: function (code) {
+                    console.log("Process exited with code " + code);
+                    console.log(stdout);
+                    console.log(stderr);
+                },
+
+            });
+
+            const out = result.MEMFS[0];
+
+            const blob = new Blob([out.data], {
+                type: "audio/mpeg"
+            });
+
+            console.log(out);
+
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = out.name;
+            a.click();
+        }
+
+
     }
     submitButton.addEventListener('click', runFFmpeg, false);
 })()
