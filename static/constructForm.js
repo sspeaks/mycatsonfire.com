@@ -1,13 +1,14 @@
 
 
 class SubmitData {
-    constructor(uri, textInputs, fileInputs) {
+    constructor(uri, textInputs, fileInputs, target="dummy") {
         // Create a form element that accepts mp3 files
         this.form = document.createElement('form');
         this.form.setAttribute('method', 'post');
         this.form.setAttribute('action', uri);
         this.form.setAttribute('enctype', 'multipart/form-data');
         this.form.style.display = 'none';
+        this.form.target = target;
         textInputs.forEach(input => this.addInput(this.createTextInput(input.name, input.value)));
         fileInputs.forEach(input => this.addInput(this.createFileInput(input.name, input.value)));
     }

@@ -89,7 +89,7 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
 
     async function runFFmpeg() {
         const { name } = playingFile
-        const outName = name.substring(0, name.indexOf('.')) + ".mp3";
+        const outName = name.substring(0, name.indexOf('.')) + "_out.mp3";
 
         const reader = new FileReader();
 
@@ -118,7 +118,8 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
             const blob = new Blob([out.data], {
                 type: "audio/mpeg"
             });
-            downloadFile(blob, outName);
+            const fileName = fileNameNode.value.match(/(.+?)(?:\.mp3|$)/)[1].trim();
+            downloadFile(blob, fileName ? fileName : outName);
 
             let file = new File([out.data], out.name, {
                 type: "audio/mpeg",
@@ -131,7 +132,7 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
             const dataSubmittal = new SubmitData('/pogbot', [
                 { name: 'stop', value: '' },
                 { name: 'start', value: '' },
-                { name: 'fileName', value: fileNameNode.value }
+                { name: 'fileName', value: fileName }
             ], [
                 { name: 'file', value: container }
             ]);
@@ -142,4 +143,13 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
     }
     // Setup submit listener
     submitButton.addEventListener('click', runFFmpeg, false);
+
+    // Create iframe to redirect to
+
+    const iframe = document.createElement('iframe');
+    iframe.name = "dummy";
+    iframe.id = "dummy";
+    iframe.style.display = 'none';
+
+    document.body.appendChild(iframe);
 })()
