@@ -1,5 +1,6 @@
 const ffmpeg = require("ffmpeg.js/ffmpeg-mp4.js");
 const { SubmitData, downloadFile } = require("./constructForm.js");
+const createModal = require('./fadingMessage.js');
 (() => {
     const videoNode = document.querySelector('#ffmpeg-video');
     const inputNode = document.querySelector('#file');
@@ -86,7 +87,6 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
     }
     inputNode.addEventListener('change', playSelectedFile, false);
 
-
     async function runFFmpeg() {
         const { name } = playingFile
         const outName = name.substring(0, name.indexOf('.')) + "_out.mp3";
@@ -118,8 +118,10 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
             const blob = new Blob([out.data], {
                 type: "audio/mpeg"
             });
-            const fileName = fileNameNode.value.match(/(.+?)(?:\.mp3|$)/)[1].trim();
-            downloadFile(blob, fileName ? fileName : outName);
+            const match = fileNameNode.value?.match(/(.+?)(?:\.mp3|$)/)
+            const fileName = match ? match[1].trim() : '';
+            const serverFileName = fileName ? fileName : outName;
+            downloadFile(blob, serverFileName);
 
             let file = new File([out.data], out.name, {
                 type: "audio/mpeg",
@@ -138,6 +140,7 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
             ]);
 
             dataSubmittal.submit();
+            createModal('.formsubmit', `Clip '${serverFileName}' submitted!`, 5);
         }
 
     }
@@ -145,7 +148,6 @@ const { SubmitData, downloadFile } = require("./constructForm.js");
     submitButton.addEventListener('click', runFFmpeg, false);
 
     // Create iframe to redirect to
-
     const iframe = document.createElement('iframe');
     iframe.name = "dummy";
     iframe.id = "dummy";
