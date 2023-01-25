@@ -5,6 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+- task: Bash@3
+  inputs:
+    filePath: 'build.sh'
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'Cats Connect'
