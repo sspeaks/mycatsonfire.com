@@ -1,5 +1,5 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash -p yarn nodejs
+#! /bin/bash
+# nix-shell -i bash -p yarn nodejs
 
 yarn install
 # if directory 'dist' doesn't exist, create it.
