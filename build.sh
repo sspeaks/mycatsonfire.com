@@ -1,5 +1,5 @@
-#! /bin/bash
-# nix-shell -i bash -p yarn nodejs
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p yarn nodejs
 
 yarn install
 echo "Yarn install complete..."
