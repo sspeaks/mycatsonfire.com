@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cat's on Fire!</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
@@ -49,8 +46,9 @@
         <!-- </section> -->
         <section class="infobox">
             <header class="infoheader">Join the Ducked my Parse Jam Session!</header>
-            <div class="info">
-		Spotify Jam sessions only available and up to date during our raids on Wednesday and Thursday evening.
+            <div class="info" id="spotifycontent">
+                <!-- Placeholder content to be dynamically updated by the script -->
+                Updating spotify jam session info...
             </div>
         </section>
         <section class="infobox">
@@ -61,6 +59,6 @@
             </div>
         </section>
     </div>
+    <script src="static/spotifyupdate.js"></script>
 </body>
-
 </html>
